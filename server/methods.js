@@ -45,7 +45,7 @@ Meteor.methods({
 		var article = Articles.findOne({title: title})
 		return article.title;
 	},
-	articleSaveAsDraft: function(title,body, thumbnailURL) {
+	articleSaveAsDraft: function(title, body, thumbnailURL) {
 		var articleId = Articles.insert({
 			title: title,
 			body: body,
@@ -69,6 +69,8 @@ Meteor.methods({
 			thumb: thumbnailURL,
 			draft: draft}
 		});
+		var article = Articles.findOne({title: title})
+		return article.title;
 	},
 	likeArticle: function(articleId) {
 		Articles.update({_id:articleId}, {$inc: {likes: 1}});

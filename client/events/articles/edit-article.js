@@ -1,17 +1,17 @@
 Template.articleEditPage.events({
 	'click button.submit': function(template) {
 		var articleId = this._id;
-		var articleRoute = '/articles/' + this.title;
 		var url = $('#url').val();
 		var title = $('#title').val();
 		var body = $('.body').code();
 		var thumbnailURL = $('#thumbnailURL').val();
 		var draft = false;
 		
-		Meteor.call('articleUpdate', articleId, title, body, thumbnailURL, draft, function(error) {
+		Meteor.call('articleUpdate', articleId, title, body, thumbnailURL, draft, function(error, response) {
 			if(error) {
 				toastr.error("Failed to Update Article... " + error);
 			} else {
+				var articleRoute = '/articles/' + response;
 				toastr.success("Article Saved.");
 				document.getElementById('title').value = '';
 				document.getElementById('summernote').value = '';
@@ -22,17 +22,17 @@ Template.articleEditPage.events({
 	},
 	'click button.save': function(template) {
 		var articleId = this._id;
-		var articleRoute = '/articles/' + this.title;
 		var url = $('#url').val();
 		var title = $('#title').val();
 		var body = $('.body').code();
 		var thumbnailURL = $('#thumbnailURL').val();
 		var draft = true;
 		
-		Meteor.call('articleUpdate', articleId, title, body, thumbnailURL, draft, function(error) {
+		Meteor.call('articleUpdate', articleId, title, body, thumbnailURL, draft, function(error, response) {
 			if(error) {
 				toastr.error("Failed to Save Article... " + error);
 			} else {
+				var articleRoute = '/articles/' + response;
 				toastr.success("Article Saved as Draft.");
 				document.getElementById('title').value = '';
 				document.getElementById('summernote').value = '';
