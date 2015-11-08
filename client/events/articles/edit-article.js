@@ -1,7 +1,7 @@
 Template.articleEditPage.events({
 	'click button.submit': function(template) {
 		var articleId = this._id;
-		var articleRoute = '/articles/' + articleId;
+		var articleRoute = '/articles/' + this.title;
 		var url = $('#url').val();
 		var title = $('#title').val();
 		var body = $('.body').code();
@@ -22,7 +22,7 @@ Template.articleEditPage.events({
 	},
 	'click button.save': function(template) {
 		var articleId = this._id;
-		var articleRoute = '/articles/' + articleId;
+		var articleRoute = '/articles/' + this.title;
 		var url = $('#url').val();
 		var title = $('#title').val();
 		var body = $('.body').code();

@@ -43,7 +43,7 @@ Meteor.methods({
 			draft: false
 		});
 		var article = Articles.findOne({title: title})
-		return article._id;
+		return article.title;
 	},
 	articleSaveAsDraft: function(title,body, thumbnailURL) {
 		var articleId = Articles.insert({
@@ -60,7 +60,7 @@ Meteor.methods({
 			draft: true
 		});
 		var article = Articles.findOne({title: title})
-		return article._id;
+		return article.title;
 	},
 	articleUpdate: function(articleId, title, body, thumbnailURL, draft) {
 		Articles.update({_id: articleId}, {$set: {
